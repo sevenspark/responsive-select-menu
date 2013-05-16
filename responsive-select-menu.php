@@ -563,6 +563,9 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 		$output.= $item_output;
 
 		$output .= "</option>\n";
+
+		$output_copy = $output;
+		$output = str_replace('%', '%%', $output_copy);
 	}
 	
 	function end_el(&$output, $item, $depth) {
