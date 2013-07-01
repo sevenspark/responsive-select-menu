@@ -406,7 +406,21 @@ jQuery(document).ready( function($){
 			</div>
 
 			<div class="cf">
+				<h4>Menu Swapper</h4>
+
+				<a href="http://wordpress.org/plugins/menu-swapper/" target="_blank"><img src="http://i.imgur.com/HtzdwfQ.png" /></a>
+
+				<p>The Menu Swapper allows you to register custom theme locations and easily swap menus on individual Pages or Posts, all through the WordPress Admin Panel</p>
+
+				<a href="http://wordpress.org/plugins/menu-swapper/" target="_blank" class="button save-button">Download 
+				Menu Swapper for Free &rarr;</a>
+			</div>
+
+			<div class="cf">
 				<h4>Contact Form 7 - Dynamic Text Extension</h4>
+
+				<a href="http://wordpress.org/extend/plugins/contact-form-7-dynamic-text-extension/" target="_blank"><img src="http://i.imgur.com/wJNTISL.png" /></a>
+
 				<p>Contact Form 7 DTX allows you to pre-populate your Contact Form 7 fields with dynamic values</p>
 
 				<a href="http://wordpress.org/extend/plugins/contact-form-7-dynamic-text-extension/" target="_blank" class="button save-button">Download 
@@ -417,50 +431,66 @@ jQuery(document).ready( function($){
 			<div class="cf">
 				<h4>UberMenu - Responsive WordPress Mega Menu Plugin</h4>
 
-				<a href="http://wpmegamenu.com"><img src="http://2.s3.envato.com/files/43473217/UberMenu_packaging_main_2.2.png" alt="UberMenu" /></a>
+				<a href="http://goo.gl/Gx39p"><img src="http://2.s3.envato.com/files/53559492/UberMenu_CodeCanyon_Preview.png" alt="UberMenu" /></a>
 
 				<p>UberMenu is a user-friendly, highly customizable responsive Mega Menu WordPress plugin. 
 				It works out of the box with the WordPress 3 Menu System, making it simple to get started 
 				but powerful enough to create highly customized and creative mega menu configurations.</p>
 
-				<a href="http://wpmegamenu.com" class="button save-button" target="_blank">Check out the UberMenu demo &rarr;</a>
+				<a href="http://goo.gl/Gx39p" class="button save-button" target="_blank">Check out the UberMenu demo &rarr;</a>
 
 			</div>
+
+			
 
 			<div class="cf">
 				<h4>UberMenu - Sticky Menu Extension</h4>
 
-				<a href="http://wpmegamenu.com/sticky"><img src="http://2.s3.envato.com/files/46737754/UberMenuSticky_packaging_main_1.0.png" alt="UberMenu Sticky Menu" /></a>
+				<a href="http://goo.gl/mMQYs"><img src="http://i.imgur.com/VX3uX5U.png" alt="UberMenu Sticky Menu" /></a>
 
 				<p>Turn your UberMenu into a Sticky Menu as your users scroll.</p>
 
-				<a href="http://wpmegamenu.com/sticky" class="button save-button" target="_blank">Check out the UberMenu Sticky demo &rarr;</a>
+				<a href="http://goo.gl/mMQYs" class="button save-button" target="_blank">Check out the UberMenu Sticky demo &rarr;</a>
 
 			</div>
 
 			<div class="cf">
+				<h4>UberMenu - Flat Skin Pack</h4>
+
+				<a href="http://goo.gl/RCTdO"><img src="http://2.s3.envato.com/files/56692616/FlatSkinPack_CodeCanyonPackaging.png" alt="UberMenu" /></a>
+
+				<p>UberMenu is a user-friendly, highly customizable responsive Mega Menu WordPress plugin. 
+				It works out of the box with the WordPress 3 Menu System, making it simple to get started 
+				but powerful enough to create highly customized and creative mega menu configurations.</p>
+
+				<a href="http://goo.gl/RCTdO" class="button save-button" target="_blank">Check out the UberMenu Flat Skin Pack demo &rarr;</a>
+
+			</div>
+
+
+			<div class="cf">
 				<h4>UberMenu - Conditionals Extension</h4>
 
-				<a href="http://wpmegamenu.com/conditionals"><img src="http://0.s3.envato.com/files/35005553/UberMenu_Conditionals_packaging_main.png" alt="UberMenu Conditionals" /></a>
+				<a href="http://goo.gl/ehTEf"><img src="http://i.imgur.com/y2X234g.png" alt="UberMenu Conditionals" /></a>
 
 				<p>Display or hide your menu items based on preset conditions.</p>
 
-				<a href="http://labs.sevenspark.com/UberMenuConditionals" class="button save-button" target="_blank">Check out the UberMenu Conditionals demo &rarr;</a>
+				<a href="http://goo.gl/ehTEf" class="button save-button" target="_blank">Check out the UberMenu Conditionals demo &rarr;</a>
 
 			</div>
 
 			<div class="cf">
 				<h4>Agility - Responsive HTML5 WordPress Theme</h4>
 
-				<img src="http://1.s3.envato.com/files/26983727/01_Agility_Responsive_WordPress_theme.__large_preview.png" alt="Agility" />
+				<a href="http://goo.gl/yYDlH"><img src="http://i.imgur.com/OgOqRhK.png" alt="Agility" /></a>
 
-				<a href="http://agility.sevenspark.com" class="button save-button" target="_blank">View the demo &rarr;</a>
+				<a href="http://goo.gl/yYDlH" class="button save-button" target="_blank">View the demo &rarr;</a>
 			</div>
 
 			<div class="cf">
 				<h4>WordPress Menu Management Enhancer</h4>
 
-				<img src="http://3.s3.envato.com/files/6124310/MenuManager_packaging_main.jpg" alt="Agility" />
+				<img src="http://i.imgur.com/DNcqlYh.png" alt="Agility" />
 
 				<a href="http://codecanyon.net/item/menu-management-enhancer-for-wordpress/529353?ref=sevenspark" class="button save-button" target="_blank">View the demo &rarr;</a>
 			</div>
