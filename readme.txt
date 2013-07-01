@@ -3,7 +3,7 @@ Contributors: sevenspark
 Donate link: http://bit.ly/DonateResponsiveSelect
 Tags: responsive, menu, select, drop down, 
 Requires at least: 3.3
-Tested up to: 3.5.1
+Tested up to: 3.6
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -71,9 +71,11 @@ If your theme creates a menu the standard way with wp_nav_menu, it should work. 
 
 == Changelog ==
 
-= 1.3.1 =
+= 1.5 =
+* Improves compatibility with latest versions of UberMenu
+
+= 1.4 =
 * Handles blank menu items better
-* Improves compatibility with latest version of UberMenu
 
 = 1.3 =
 * Better compatibility with themes that remove the wp_nav_menu 'container' parameter.

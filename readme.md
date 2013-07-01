@@ -29,14 +29,14 @@ The Responsive Select Menu plugin automatically turns any WordPress 3 Menu into 
 One common UI paradigm for navigation menus with responsive design is to display a select box (form element) 
 for mobile devices.  This plugin allows you to turn your WordPress 3 menu into a select box below a width of your choice.
 
-* Features *
+** Features **
 
 * Takes up less screen real estate on mobile devices
 * Easier navigation for touch screens
 * Works automatically - no need to add extra PHP code
 
 
-* Highly Configurable *
+** Highly Configurable **
 
 Through the Responsive Select Menu Control Panel you can:
 
@@ -62,13 +62,13 @@ This section describes how to install the plugin and get it working.
 
 ## Frequently Asked Questions ##
 
-* Do I have to have a "Navigate" item as my first item *
+** Do I have to have a "Navigate" item as my first item **
 
 You can change the name of this item, but it has to exist.  Otherwise, you won't be able to navigate to the first item in the menu
 if you're not using the "Show currently selected item" - even if you have that option enabled, the issue would still exist on pages not 
 in the menu.
 
-* It doesn't work *
+** It doesn't work **
 
 If your theme creates a menu the standard way with wp_nav_menu, it should work.  If not, make sure you're using 1.3+, as this resolves the most common "it doesn't work" issue.
 
@@ -81,18 +81,26 @@ If your theme creates a menu the standard way with wp_nav_menu, it should work. 
 
 ## Changelog ##
 
-* 1.4 *
-* Handles blank menu items better
+**1.5**
+
 * Improves compatibility with latest version of UberMenu
 
-* 1.3 *
+**1.4**
+
+* Handles blank menu items better
+
+** 1.3 **
+
 * Better compatibility with themes that remove the wp_nav_menu 'container' parameter.
 
-* 1.2 *
+**1.2**
+
 * Added option to select specific theme locations to apply the responsive select menu to.
 
-* 1.1 *
+**1.1**
+
 * Fixed option closing tag order for valid HTML markup
 
-* 1.0 *
+**1.0**
+
 * Initial version

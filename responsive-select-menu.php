@@ -4,13 +4,13 @@
 Plugin Name: Responsive Select Menu
 Plugin URI: http://wpmegamenu.com/responsive-select-menu
 Description: Turn your menu into a select box at small viewport sizes
-Version: 1.4
+Version: 1.5
 Author: Chris Mavricos, SevenSpark
 Author URI: http://sevenspark.com
-Copyright 2011-2012  Chris Mavricos, SevenSpark http://sevenspark.com (email : chris@sevenspark.com) 
+Copyright 2011-2013  Chris Mavricos, SevenSpark http://sevenspark.com (email : chris@sevenspark.com) 
 */
 
-define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.4' );
+define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.5' );
 define( 'RESPONSIVE_SELECT_MENU_SETTINGS', 'responsive-select-menu' );
 
 require_once( 'sparkoptions/SparkOptions.class.php' );		//SevenSpark Options Panel
@@ -142,6 +142,7 @@ jQuery(document).ready( function($){
 		var loc = $(this).find( 'option:selected' ).val();
 		if( loc != '' && loc != '#' ) window.location = loc;
 	});
+	//$( '.responsiveMenuSelect' ).val('');
 });
 </script>
 <!-- end Responsive Select JS -->
@@ -482,6 +483,8 @@ $responsiveMenuSelect = new ResponsiveMenuSelect();
 class ResponsiveSelectWalker extends Walker_Nav_Menu{
 
 	private $index = 0;
+	protected $menuItemOptions;
+	protected $noUberOps;
 	
 	function start_lvl( &$output, $depth ) {
 		$indent = str_repeat( "\t", $depth );
@@ -522,16 +525,16 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 			$settings = $uberMenu->getSettings();
 
 			//Test override settings
-			$override = get_post_meta( $item->ID, '_menu_item_shortcode', true);
+			$override = $this->getUberOption( $item->ID, 'shortcode' );
 			$overrideOn = /*$depth > 0  && */ $settings->op( 'wpmega-shortcodes' ) && !empty( $override ) ? true : false;
 			
 			//Test sidebar settings
-			$sidebar = get_post_meta( $item->ID, '_menu_item_sidebars', true);
+			$sidebar = $this->getUberOption( $item->ID, 'sidebars' );
 			$sidebarOn = ( $settings->op( 'wpmega-top-level-widgets' ) || $depth > 0 ) && $settings->op( 'wpmega-sidebars' ) && !empty( $sidebar ) ? true : false;
 
-			$notext = get_post_meta( $item->ID, '_menu_item_notext', true ) == 'on' || $item->title == UBERMENU_NOTEXT ? true : false;
-			$nolink = get_post_meta( $item->ID, '_menu_item_nolink', true ) == 'on' ? true : false;
-				
+			$notext = $this->getUberOption( $item->ID, 'notext' ) == 'on' || $item->title == UBERMENU_NOTEXT ? true : false;
+			$nolink = $this->getUberOption( $item->ID, 'nolink' ) == 'on' ? true : false;
+
 			if( $nolink && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-nonlinks' ) ){
 				return;
 			}
@@ -560,12 +563,45 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 		$item_output .= $dashes . $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 		$item_output .= $args->after;
 
-		$output.= $item_output;
+		$output.= str_replace( '%', '%%', $item_output );
 
-		$output .= "</option>\n";
+		$output.= "</option>\n";
 	}
 	
 	function end_el(&$output, $item, $depth) {
 		return;		
+	}
+
+	function getUberOption( $item_id , $id ){
+		//get_post_meta or from uber_options, depending on whether uber_options is set
+
+		$option_id = 'menu-item-'.$id;
+
+		//Initialize array
+		if( !is_array( $this->menuItemOptions ) ){
+			$this->menuItemOptions = array();
+			$this->noUberOps = array();
+		}
+
+		//We haven't investigated this item yet
+		if( !isset( $this->menuItemOptions[ $item_id ] ) ){
+			
+			$uber_options = false;
+			if( empty( $this->noUberOps[ $item_id ] ) ) {
+				$uber_options = get_post_meta( $item_id , '_uber_options', true );
+				if( !$uber_options ) $this->noUberOps[ $item_id ] = true; //don't check again for this menu item
+			}
+
+			//If $uber_options are set, use them
+			if( $uber_options ){
+				$this->menuItemOptions[ $item_id ] = $uber_options;
+			} 
+			//Otherwise get the old meta
+			else{
+				$option_id = '_menu_item_'.$id; //UberMenu::convertToOldParameter( $id );
+				return get_post_meta( $item_id, $option_id , true );
+			}
+		}
+		return isset( $this->menuItemOptions[ $item_id ][ $option_id ] ) ? stripslashes( $this->menuItemOptions[ $item_id ][ $option_id ] ) : '';
 	}
 }
