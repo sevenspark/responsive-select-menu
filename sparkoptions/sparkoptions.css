@@ -681,3 +681,26 @@ label.spark-admin-op-title{
 .ss-dribbble{
 	background:transparent url(images/social_media_icons/dribbble.png) top left no-repeat;
 }
+
+
+.um-half{
+	-webkit-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	width:50%;
+	padding:10px;
+}
+
+.cf:before,
+.cf:after {
+    content:"";
+    display:table;
+}
+.cf:after {
+    clear:both;
+}
+.cf {
+    zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+
