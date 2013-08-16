@@ -4,14 +4,14 @@
 Plugin Name: Responsive Select Menu
 Plugin URI: http://wpmegamenu.com/responsive-select-menu
 Description: Turn your menu into a select box at small viewport sizes
-Version: 1.5.1
+Version: 1.5.2
 Author: Chris Mavricos, SevenSpark
 Author URI: http://sevenspark.com
 License: GPLv2
 Copyright 2011-2013  Chris Mavricos, SevenSpark http://sevenspark.com (email : chris@sevenspark.com) 
 */
 
-define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.5.1' );
+define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.5.2' );
 define( 'RESPONSIVE_SELECT_MENU_SETTINGS', 'responsive-select-menu' );
 
 require_once( 'sparkoptions/SparkOptions.class.php' );		//SevenSpark Options Panel
@@ -517,17 +517,17 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 	protected $menuItemOptions;
 	protected $noUberOps;
 	
-	function start_lvl( &$output, $depth ) {
+	function start_lvl( &$output, $depth = 0 , $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
 		//$output .= "\n$indent<ul class=\"sub-menu sub-menu-".($depth+1)."\">\n";
 	}
 	
-	function end_lvl(&$output, $depth) {
+	function end_lvl(&$output, $depth = 0 , $args = array() ) {
 		$indent = str_repeat("\t", $depth);
 		//$output .= "$indent</ul>\n";
 	}
 	
-	function start_el( &$output, $item, $depth, $args ){
+	function start_el( &$output, $item, $depth = 0, $args = array(), $current_object_id = 0 ){
 		
 		global $responsiveMenuSelect;
 		global $wp_query;
@@ -599,7 +599,7 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 		$output.= "</option>\n";
 	}
 	
-	function end_el(&$output, $item, $depth) {
+	function end_el(&$output, $item, $depth = 0 , $args = array() ) {
 		return;		
 	}
 
