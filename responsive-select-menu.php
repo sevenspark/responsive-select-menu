@@ -195,7 +195,7 @@ jQuery(document).ready( function($){
 
 			$itemName = $this->settings->op( 'first_item' );
 			$selected = $this->settings->op( 'current_selected' ) ? '' : 'selected="selected"';
-			$firstOp = '<option value="" '.$selected.'>'.$itemName.'</option>';
+			$firstOp = '<option value="" '.$selected.'>'.apply_filters( 'rsm_first_item_text' , $itemName , $args ).'</option>';
 
 			$args['container'] = false;
 			$args['menu_class'] = 'responsiveMenuSelect';
