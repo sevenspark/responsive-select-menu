@@ -625,7 +625,8 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 		}
 
 		//$attributes = ! empty( $item->url )        ? ' value="'   . esc_attr( $item->url        ) .'"' : '';
-		$attributes = ' value="'   . esc_attr( $item->url        ) .'"';
+		$item->url = urldecode( $item->url );
+		$attributes = ' value="'   . esc_attr( $item->url ) .'"';
 		
 		if( $responsiveMenuSelect->getSettings()->op( 'current_selected' ) && strpos( $class_names , 'current-menu-item' ) > 0 ){
 			$attributes.= ' selected="selected"';
