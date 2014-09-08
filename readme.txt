@@ -48,6 +48,7 @@ This section describes how to install the plugin and get it working.
 1. Upload the plugin zip through your WordPress admin
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Navigate to Appearance > Responsive Select to configure your menu
+1. If you are using UberMenu 3, disable the Responsive Toggle setting in the UberMenu Control Panel > Main UberMenu Configuration > Responsive & Mobile > Responsive Toggle.
 
 
 == Frequently Asked Questions ==
