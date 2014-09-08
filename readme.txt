@@ -72,6 +72,11 @@ If your theme creates a menu the standard way with wp_nav_menu, it should work. 
 
 == Changelog ==
 
+= 1.6 =
+
+* Added UberMenu 3 compatibility
+* Added Cyrillic characters fix (experimental)
+
 = 1.5.3 =
 * Added UberMenu Conditionals compatibility
 * Added filterable first menu item names
