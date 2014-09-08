@@ -123,6 +123,9 @@ class ResponsiveMenuSelect{
 		border:none !important;
 		background:none !important;
 		box-shadow:none !important;
+		height:auto !important;
+		max-height:none !important;
+		visibility:visible !important;
 	}
 	.responsiveSelectContainer ul, ul.responsiveSelectFullMenu, #megaMenu ul.megaMenu.responsiveSelectFullMenu{
 		display: none !important;
@@ -161,6 +164,11 @@ jQuery(document).ready( function($){
 			if( isset( $args['responsiveMenuSelect'] ) && $args['responsiveMenuSelect'] == true ) {
 				return $args;
 			}
+
+			//Ignore menu segments
+			if( isset( $args['uber_segment'] ) ){
+				return $args;
+			}
 			
 			$selectNav = $this->selectNavMenu( $args );
 			
@@ -181,6 +189,7 @@ jQuery(document).ready( function($){
 	function selectNavMenu( $args ){
 		
 		$args['responsiveMenuSelect'] = true;
+		unset( $args['uber_instance'] );
 		
 		$select = wp_nav_menu( $args );
 		
@@ -508,7 +517,9 @@ jQuery(document).ready( function($){
 $responsiveMenuSelect = new ResponsiveMenuSelect();
 
 
-
+function uber3_get_item_settings( $item_id ){
+	return get_post_meta( $item_id, UBERMENU_MENU_ITEM_META_KEY , true );
+}
 
 
 class ResponsiveSelectWalker extends Walker_Nav_Menu{
@@ -553,31 +564,63 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 		if( $responsiveMenuSelect->getSettings()->op( 'uber-enabled' ) ){
 
 			global $uberMenu;
-			$settings = $uberMenu->getSettings();
 
-			//Test override settings
-			$override = $this->getUberOption( $item->ID, 'shortcode' );
-			$overrideOn = /*$depth > 0  && */ $settings->op( 'wpmega-shortcodes' ) && !empty( $override ) ? true : false;
-			
-			//Test sidebar settings
-			$sidebar = $this->getUberOption( $item->ID, 'sidebars' );
-			$sidebarOn = ( $settings->op( 'wpmega-top-level-widgets' ) || $depth > 0 ) && $settings->op( 'wpmega-sidebars' ) && !empty( $sidebar ) ? true : false;
+			//UberMenu 2
+			if( $uberMenu ){
+				$settings = $uberMenu->getSettings();
 
-			$notext = $this->getUberOption( $item->ID, 'notext' ) == 'on' || $item->title == UBERMENU_NOTEXT ? true : false;
-			$nolink = $this->getUberOption( $item->ID, 'nolink' ) == 'on' ? true : false;
+				//Test override settings
+				$override = $this->getUberOption( $item->ID, 'shortcode' );
+				$overrideOn = /*$depth > 0  && */ $settings->op( 'wpmega-shortcodes' ) && !empty( $override ) ? true : false;
+				
+				//Test sidebar settings
+				$sidebar = $this->getUberOption( $item->ID, 'sidebars' );
+				$sidebarOn = ( $settings->op( 'wpmega-top-level-widgets' ) || $depth > 0 ) && $settings->op( 'wpmega-sidebars' ) && !empty( $sidebar ) ? true : false;
 
-			if( $nolink && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-nonlinks' ) ){
-				return;
+				$notext = $this->getUberOption( $item->ID, 'notext' ) == 'on' || $item->title == UBERMENU_NOTEXT ? true : false;
+				$nolink = $this->getUberOption( $item->ID, 'nolink' ) == 'on' ? true : false;
+
+				if( $nolink && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-nonlinks' ) ){
+					return;
+				}
+				if( $notext && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-notext' ) ){
+					return;
+				}
+				if( $sidebarOn && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-sidebar' ) ){
+					return;
+				}
+				if( $overrideOn && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-content-overrides' ) ){
+					return;
+				}
 			}
-			if( $notext && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-notext' ) ){
-				return;
-			}
-			if( $sidebarOn && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-sidebar' ) ){
-				return;
-			}
-			if( $overrideOn && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-content-overrides' ) ){
-				return;
-			}					
+			else if( function_exists( 'ubermenu' ) ){
+				$settings = uber3_get_item_settings( $item->ID );
+
+				//Nolink
+				if( ( $settings['disable_link'] == on ) && ( $responsiveMenuSelect->getSettings()->op( 'uber-exclude-nonlinks' ) == 'on' ) ){
+					return;
+				}
+
+				//Notext
+				if( ( $settings['disable_text'] == on ) && ( $responsiveMenuSelect->getSettings()->op( 'uber-exclude-notext' ) == 'on' ) ){
+					return;
+				}
+
+				//Sidebar
+				if( ( $settings['widget_area'] || $settings['auto_widget_area'] ) &&  $responsiveMenuSelect->getSettings()->op( 'uber-exclude-sidebar' ) ){
+					return;
+				}
+
+				//Custom
+				if( $settings['custom_content'] && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-content-overrides' ) ){
+					return;
+				}
+
+				//Advanced
+				if( $item->object == 'ubermenu-custom' ){
+					return;
+				}
+			}				
 
 		}
 
