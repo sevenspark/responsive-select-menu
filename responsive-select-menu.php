@@ -597,22 +597,22 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 				$settings = uber3_get_item_settings( $item->ID );
 
 				//Nolink
-				if( ( $settings['disable_link'] == on ) && ( $responsiveMenuSelect->getSettings()->op( 'uber-exclude-nonlinks' ) == 'on' ) ){
+				if( isset( $settings['disable_link'] ) && ( $settings['disable_link'] == on ) && ( $responsiveMenuSelect->getSettings()->op( 'uber-exclude-nonlinks' ) == 'on' ) ){
 					return;
 				}
 
 				//Notext
-				if( ( $settings['disable_text'] == on ) && ( $responsiveMenuSelect->getSettings()->op( 'uber-exclude-notext' ) == 'on' ) ){
+				if( isset( $settings['disable_text'] ) && ( $settings['disable_text'] == on ) && ( $responsiveMenuSelect->getSettings()->op( 'uber-exclude-notext' ) == 'on' ) ){
 					return;
 				}
 
 				//Sidebar
-				if( ( $settings['widget_area'] || $settings['auto_widget_area'] ) &&  $responsiveMenuSelect->getSettings()->op( 'uber-exclude-sidebar' ) ){
+				if( isset( $settings['widget_area'] ) && ( $settings['widget_area'] || $settings['auto_widget_area'] ) &&  $responsiveMenuSelect->getSettings()->op( 'uber-exclude-sidebar' ) ){
 					return;
 				}
 
 				//Custom
-				if( $settings['custom_content'] && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-content-overrides' ) ){
+				if( isset( $settings['custom_content'] ) && $settings['custom_content'] && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-content-overrides' ) ){
 					return;
 				}
 
