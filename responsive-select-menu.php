@@ -560,6 +560,10 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 			return;
 		}
 
+		//uberp( $item );
+
+		if( $item->object == 'ubermenu-custom' ) return;
+
 		//IF UBERMENU
 		if( $responsiveMenuSelect->getSettings()->op( 'uber-enabled' ) ){
 
@@ -594,6 +598,7 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 				}
 			}
 			else if( function_exists( 'ubermenu' ) ){
+
 				$settings = uber3_get_item_settings( $item->ID );
 
 				//Nolink
