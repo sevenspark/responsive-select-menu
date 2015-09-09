@@ -4,14 +4,14 @@
 Plugin Name: Responsive Select Menu
 Plugin URI: http://wpmegamenu.com/responsive-select-menu
 Description: Turn your menu into a select box at small viewport sizes
-Version: 1.6
+Version: 1.7
 Author: Chris Mavricos, SevenSpark
 Author URI: http://sevenspark.com
 License: GPLv2
 Copyright 2011-2014  Chris Mavricos, SevenSpark http://sevenspark.com (email : chris@sevenspark.com) 
 */
 
-define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.6' );
+define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.7' );
 define( 'RESPONSIVE_SELECT_MENU_SETTINGS', 'responsive-select-menu' );
 
 require_once( 'sparkoptions/SparkOptions.class.php' );		//SevenSpark Options Panel
