@@ -637,15 +637,17 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 			$attributes.= ' selected="selected"';
 		}
 		
-		$output .= $indent . '<option ' . $id . $attributes . '>';
+		$option = $indent . '<option ' . $id . $attributes . '>';
 
 		$item_output = $args->before;
 		$item_output .= $dashes . $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 		$item_output .= $args->after;
 
-		$output.= str_replace( '%', '%%', $item_output );
+		$option .= $item_output;
 
-		$output.= "</option>\n";
+		$option .= "</option>\n";
+
+		$output .= str_replace( '%', '%%', $option );
 	}
 	
 	function end_el(&$output, $item, $depth = 0 , $args = array() ) {
